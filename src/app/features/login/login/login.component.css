@@ -5,7 +5,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #053b50;
+  background-image: linear-gradient(
+    to bottom,
+    #053b50,
+    #09465d,
+    #0e526b,
+    #135f79,
+    #176b87
+  );
 }
 
 h2 {
@@ -13,7 +20,14 @@ h2 {
 }
 
 form {
-  background-color: white;
+  background-image: linear-gradient(
+    to bottom,
+    #053b50,
+    #09465d,
+    #0e526b,
+    #135f79,
+    #176b87
+  );
   width: 30%;
   height: 50%;
   display: flex;
@@ -21,4 +35,75 @@ form {
   align-items: center;
   flex-direction: column;
   border-radius: 10px;
+  box-shadow: 18px 17px 77px -10px rgba(0, 0, 0, 0.75);
 }
+
+.form-group1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+input {
+  height: 30px;
+  width: 280px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  caret-color: #ffbb2f;
+}
+
+input:focus {
+  outline: 0;
+}
+
+label {
+  font-size: 20px;
+  color: #ffbb2f;
+}
+
+button {
+  border: none;
+  padding: 10px 20px;
+  background-color: #176b87;
+  border-radius: 10px;
+  color: #eeeeee;
+  font-size: 18px;
+  transition: ease 0.3s;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+svg {
+  height: 100px;
+  width: 200px;
+}
+
+p {
+  color: #eeeeee;
+}
+
+a {
+  color: #ffbb2f;
+  font-weight: 800;
+}
+/* .usernameDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
