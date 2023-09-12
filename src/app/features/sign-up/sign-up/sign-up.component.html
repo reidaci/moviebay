@@ -1,5 +1,8 @@
 <div class="signup-container">
-  <form (ngSubmit)="login()" #signup="ngForm">
+  <form
+    #signup="ngForm"
+    (ngSubmit)="signUp(signup.value.email, signup.value.password)"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -174,23 +177,14 @@
         </g>
       </g>
     </svg>
-    <div class="form-group1">
-      <label for="username">Username</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        [(ngModel)]="formData.username"
-        required
-      />
-    </div>
+
     <div class="form-group2">
       <label for="username">Email</label>
       <input
         type="email"
-        id="username"
-        name="username"
-        [(ngModel)]="formData.username"
+        id="email"
+        name="email"
+        [(ngModel)]="formData.email"
         required
       />
     </div>
@@ -204,7 +198,7 @@
         required
       />
     </div>
-    <button type="submit" [disabled]="signup.invalid">Sign Up</button>
+    <button type="submit">Sign Up</button>
     <p>You have an account? <a routerLink="/login">Log in</a></p>
   </form>
 </div>

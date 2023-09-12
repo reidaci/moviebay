@@ -1,3 +1,5 @@
+import { FirebaseService } from './../../../core/services/firebase.service';
+import { User } from './../../../core/models/user';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,19 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
+  title = 'angular-firebase';
   formData = {
-    username: '',
+    email: '',
     password: '',
   };
-
-  login() {
-    if (
-      this.formData.username === 'user' &&
-      this.formData.password === 'password'
-    ) {
-      console.log('Authentication successful');
-    } else {
-      console.log('Authentication failed');
-    }
+  constructor(public firebase: FirebaseService) {}
+  signUp(email: string, pass: string) {
+    this.firebase.handleRegister(email, pass);
   }
 }

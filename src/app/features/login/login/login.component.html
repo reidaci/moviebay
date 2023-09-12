@@ -1,5 +1,8 @@
 <div class="login-container">
-  <form (ngSubmit)="login()" #loginForm="ngForm">
+  <form
+    (ngSubmit)="logIn(loginForm.value.email, loginForm.value.password)"
+    #loginForm="ngForm"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -175,12 +178,12 @@
       </g>
     </svg>
     <div class="form-group1">
-      <label for="username">Username</label>
+      <label for="email">Email</label>
       <input
-        type="text"
-        id="username"
-        name="username"
-        [(ngModel)]="formData.username"
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="formData.email"
         required
       />
     </div>
