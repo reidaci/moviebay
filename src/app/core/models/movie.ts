@@ -1,9 +1,11 @@
 export interface Movie {
-  id: number;
-  name: string;
-  description: string;
-  time: number;
-  year: number;
-  rating: number;
-  category: any;
+  rank: number
+  title: string
+  description: string
+  image: string
+  genre: string[]
+  thumbnail: string
+  rating: string
+  id: string
+  year: number
 }
