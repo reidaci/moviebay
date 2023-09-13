@@ -7,12 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./movie-list.component.css'],
 })
 export class MovieListComponent {
-  constructor(private movieservice: MoviesService) {}
-  ngOnInit(): void {
-    console.log(this.getMovies());
+  constructor(private movieservice: MoviesService) {
+    movieservice.getMovies();
   }
-
-  getMovies() {
-    this.movieservice.movies();
-  }
+  ngOnInit(): void {}
 }
