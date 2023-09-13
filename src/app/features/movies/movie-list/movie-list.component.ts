@@ -7,8 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./movie-list.component.css'],
 })
 export class MovieListComponent {
-  constructor(private movieservice: MoviesService) {
-    movieservice.getMovies();
+  // allMovies = this.movieservice.getMovies();
+  allMovies: any;
+
+  constructor(private movieservice: MoviesService) {}
+  ngOnInit() {
+    this.movieservice.getMovies().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.allMovies = res;
+      },
+      (err: any) => console.log(err)
+    );
+    console.log('nga lista', this.allMovies);
   }
-  ngOnInit(): void {}
 }

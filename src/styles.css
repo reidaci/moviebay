@@ -4,3 +4,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+app-movie-list {
+  width: 100%;
+  float: left;
+  background-color: #176b87;
+}
