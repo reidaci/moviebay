@@ -7,7 +7,7 @@ import { CategoryListComponent } from './features/category/category-list/categor
 import { MovieListComponent } from './features/movies/movie-list/movie-list.component';
 import { LoginComponent } from './features/login/login/login.component';
 import { SignUpComponent } from './features/sign-up/sign-up/sign-up.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
@@ -31,6 +31,7 @@ import {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

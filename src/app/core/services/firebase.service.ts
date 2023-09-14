@@ -4,13 +4,21 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
-import {  Router } from '@angular/router';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+
+import { getFirestore } from 'firebase/firestore/lite';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
-  constructor(public auth: Auth, private route: Router) {}
+  user!: any;
+  constructor(
+    public auth: Auth,
+    private route: Router,
+    private firebase: Firestore
+  ) {}
 
   handleRegister(email: string, password: string) {
     createUserWithEmailAndPassword(this.auth, email, password)
@@ -24,11 +32,20 @@ export class FirebaseService {
   handleLogin(email: string, password: string) {
     signInWithEmailAndPassword(this.auth, email, password)
       .then((res: any) => {
-        console.log(res);
+        this.user = res.user.uid;
+        localStorage.setItem('userId', this.user);
+        console.log(this.user);
         this.route.navigate(['/movielist']);
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+  addToFavorite(movies: object) {
+    const collectionInstance = collection(this.firebase, this.user);
+    addDoc(collectionInstance, movies).then((res) => {
+      console.log(this.user);
+      console.log(res);
+    });
   }
 }

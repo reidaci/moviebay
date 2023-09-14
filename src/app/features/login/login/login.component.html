@@ -197,7 +197,12 @@
         required
       />
     </div>
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    <button
+      type="submit"
+      [disabled]="loginForm.invalid || !formData.email"
+    >
+      Login
+    </button>
     <p>Dont have an account yet? <a routerLink="/signup">Sign Up</a></p>
   </form>
 </div>

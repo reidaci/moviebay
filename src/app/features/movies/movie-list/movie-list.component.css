@@ -60,7 +60,7 @@ a {
 }
 
 aside {
-  background-color: red;
+  background-color: #eeeeee;
 }
 
 section {
@@ -68,12 +68,12 @@ section {
   grid-template-columns: repeat(4, 20%);
   justify-content: space-evenly;
   padding: 50px 0;
-  background-color: black;
+  background-color: #176b87;
 }
 
 .card {
   margin-bottom: 30px;
-  background-color: wheat;
+  background-color: #053b50;
   transition: ease 0.3s;
   border-radius: 10px;
   overflow: hidden;
@@ -89,7 +89,11 @@ img {
 .details {
   padding: 10px;
 }
-
+h4,
+p,
+span {
+  color: #eeeeee;
+}
 @media only screen and (max-width: 991px) {
   section {
     grid-template-columns: repeat(3, 28%);

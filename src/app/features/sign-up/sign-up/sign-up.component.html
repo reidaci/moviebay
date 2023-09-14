@@ -198,7 +198,9 @@
         required
       />
     </div>
-    <button type="submit">Sign Up</button>
+    <button type="submit" [disabled]="!formData.email">
+      Sign Up
+    </button>
     <p>You have an account? <a routerLink="/login">Log in</a></p>
   </form>
 </div>

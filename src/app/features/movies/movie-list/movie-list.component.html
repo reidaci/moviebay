@@ -177,106 +177,53 @@
 
     <a>Favourites</a>
     <div class="searchLogout">
-      <input type="text" placeholder="Search..." />
-      <i class="fa-solid fa-right-from-bracket"></i>
+      <input
+        type="text"
+        placeholder="Search..."
+        [(ngModel)]="inputValue"
+        (ngModelChange)="search()"
+        #filter
+      />
+      <i
+        routerLink="/login"
+        (click)="logOut()"
+        class="fa-solid fa-right-from-bracket"
+        id="logOut"
+      ></i>
     </div>
   </nav>
 
   <div class="content">
     <aside>
-      <p>dsadvahf</p>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 10%;
+        "
+        *ngFor="let x of categories"
+      >
+        <button (click)="filterCategory(x)">{{ x }}</button>
+      </div>
     </aside>
 
     <section>
-      <div class="card">
+      <div class="card" *ngFor="let movie of allMovies">
         <div class="image">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-            alt=""
-          />
+          <img src="{{ movie.image }}" alt="" />
         </div>
         <div class="details">
-          <h4>The Shawshank Redemption</h4>
-          <p>Drama, Tragedy</p>
-          <span>1994</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="image">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-            alt=""
-          />
-        </div>
-        <div class="details">
-          <p>dsjakdjas</p>
-          <p>dsjakdjas</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="image">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-            alt=""
-          />
-        </div>
-        <div class="details">
-          <p>dsjakdjas</p>
-          <p>dsjakdjas</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="image">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-            alt=""
-          />
-        </div>
-        <div class="details">
-          <p>dsjakdjas</p>
-          <p>dsjakdjas</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="image">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-            alt=""
-          />
-        </div>
-        <div class="details">
-          <p>dsjakdjas</p>
-          <p>dsjakdjas</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="image">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-            alt=""
-          />
-        </div>
-        <div class="details">
-          <p>dsjakdjas</p>
-          <p>dsjakdjas</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="image">
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-            alt=""
-          />
-        </div>
-        <div class="details">
-          <p>dsjakdjas</p>
-          <p>dsjakdjas</p>
+          <h4>{{ movie.title }}</h4>
+          <p>{{ movie.genre }}</p>
+          <span>{{ movie.year }}</span>
+          <button class="success" (click)="addToFav(movie)">Add to fav</button>
         </div>
       </div>
     </section>
 
     <aside>
-      <p>adsdfajfjakffakf</p>
+      <p></p>
     </aside>
   </div>
 </div>

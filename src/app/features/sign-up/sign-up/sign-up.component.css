@@ -18,7 +18,6 @@
 h2 {
   font-size: 30px;
 }
-
 form {
   background-image: linear-gradient(
     to bottom,
@@ -29,7 +28,7 @@ form {
     #176b87
   );
   width: 30%;
-  height: 60%;
+  height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
