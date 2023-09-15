@@ -7,8 +7,6 @@ import {
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
-import { getFirestore } from 'firebase/firestore/lite';
-
 @Injectable({
   providedIn: 'root',
 })

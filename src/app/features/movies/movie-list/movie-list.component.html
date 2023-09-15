@@ -1,5 +1,6 @@
 <div class="container">
   <nav>
+    <button><a>Favourites</a></button>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -174,8 +175,6 @@
         </g>
       </g>
     </svg>
-
-    <a>Favourites</a>
     <div class="searchLogout">
       <input
         type="text"
@@ -209,7 +208,19 @@
     </aside>
 
     <section>
-      <div class="card" *ngFor="let movie of allMovies">
+      <div
+        class="card"
+        *ngFor="
+          let movie of allMovies
+            | paginate
+              : {
+                  id: 'foo',
+                  itemsPerPage: 8,
+                  currentPage: p,
+                  totalItems: allMovies?.length,
+                }
+        "
+      >
         <div class="image">
           <img src="{{ movie.image }}" alt="" />
         </div>
@@ -219,6 +230,18 @@
           <span>{{ movie.year }}</span>
           <button class="success" (click)="addToFav(movie)">Add to fav</button>
         </div>
+      </div>
+      <div>
+        <pagination-controls
+          id="foo"
+          (pageChange)="p = $event"
+          previousLabel="Previous"
+          nextLabel="Next"
+          screenReaderPaginationLabel="Pagination"
+          screenReaderPageLabel="page"
+          screenReaderCurrentLabel="You're on page"
+        >
+        </pagination-controls>
       </div>
     </section>
 

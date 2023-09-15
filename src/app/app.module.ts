@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,11 +13,14 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { NgxPaginationModule } from 'ngx-pagination';
 import {
   HttpClient,
   HttpClientModule,
   HttpHandler,
 } from '@angular/common/http';
+import { MoviesService } from './core/services/movies.service';
+import { FirebaseService } from './core/services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import {
   ],
   imports: [
     BrowserModule,
+
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -37,8 +41,10 @@ import {
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
+    NgxPaginationModule,
   ],
-  providers: [],
+  providers: [MoviesService, FirebaseService],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

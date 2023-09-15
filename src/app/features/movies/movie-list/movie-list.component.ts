@@ -1,3 +1,4 @@
+import { getFirestore } from '@angular/fire/firestore';
 import { Category } from './../../../core/models/category';
 import { FirebaseService } from 'src/app/core/services/firebase.service';
 import { MoviesService } from './../../../core/services/movies.service';
@@ -13,9 +14,12 @@ export class MovieListComponent {
   allMovies: any;
   filterMovies: any;
   inputValue!: any;
+  bestMovies: any;
   searchedMovies: any;
+  p: any = 1;
   categories: any = [
-    'All',
+    'All movies',
+    'Top Rated',
     'Drama',
     'Crime',
     'Action',
@@ -38,6 +42,7 @@ export class MovieListComponent {
       (res: any) => {
         this.allMovies = res;
         this.filterMovies = res;
+        console.log(this.allMovies.length);
       },
       (err: any) => console.log(err)
     );
@@ -54,13 +59,22 @@ export class MovieListComponent {
   filterCategory(category: string) {
     this.allMovies = this.filterMovies;
     const filteredResult: any[] = [];
-    this.allMovies.forEach((element: any) => {
-      if (element.genre.includes(category)) {
-        filteredResult.push(element);
-        this.allMovies = filteredResult;
-      }
-    });
-    console.log(filteredResult);
+    if (category === 'Top Rated') {
+      this.allMovies.forEach((element: any) => {
+        if (element.rating >= '9.0') {
+          filteredResult.push(element);
+          this.allMovies = filteredResult;
+        }
+      });
+    } else {
+      this.allMovies.forEach((element: any) => {
+        if (element.genre.includes(category)) {
+          filteredResult.push(element);
+          this.allMovies = filteredResult;
+        }
+      });
+      console.log(filteredResult);
+    }
   }
 
   search() {
