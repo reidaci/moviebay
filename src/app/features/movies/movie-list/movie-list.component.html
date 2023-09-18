@@ -2,7 +2,6 @@
   <nav>
     <button
       routerLink="/favoritesmovies"
-      (click)="getFavorites()"
       style="color: #ffbb2f; background: transparent"
     >
       Favourites
@@ -239,6 +238,7 @@
                 }
         "
       >
+        <span class="rating">{{ movie.rating }}</span>
         <div class="image">
           <img src="{{ movie.image }}" alt="" />
         </div>
@@ -246,6 +246,7 @@
           <h4>{{ movie.title }}</h4>
           <p>{{ movie.genre }}</p>
           <span>{{ movie.year }}</span>
+
           <button class="success" (click)="addToFav(movie)">Add to fav</button>
         </div>
       </div>

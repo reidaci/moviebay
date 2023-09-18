@@ -1,1 +1,111 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+}
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  width: 100%;
+}
+
+svg {
+  height: 70px;
+  width: 120px;
+}
+
+a {
+  font-size: 20px;
+}
+
+input {
+  border: none;
+  background-color: white;
+  padding: 10px 0 10px 10px;
+  border-radius: 20px;
+}
+
+input:focus {
+  outline: 0;
+}
+
+.searchLogout {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+i {
+  color: #ffbb2f !important;
+  cursor: pointer;
+  transition: ease 0.3s;
+  font-size: 25px;
+}
+
+i:hover {
+  transform: scale(1.2);
+}
+
+a {
+  color: #ffbb2f;
+  cursor: pointer;
+}
+
+.content {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 15% 70% 15%;
+}
+
+aside {
+  background-color: #eeeeee;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(4, 20%);
+  justify-content: space-evenly;
+  padding: 50px 0;
+  background-color: #176b87;
+}
+
+.card {
+  margin-bottom: 30px;
+  background-color: #053b50;
+  transition: ease 0.3s;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+
+img {
+  max-width: 100%;
+}
+
+.details {
+  padding: 10px;
+}
+h4,
+p,
+span {
+  color: #eeeeee;
+}
+@media only screen and (max-width: 991px) {
+  section {
+    grid-template-columns: repeat(3, 28%);
+  }
+}
+@media only screen and (max-width: 767px) {
+  section {
+    grid-template-columns: repeat(2, 40%);
+  }
+}
+@media only screen and (max-width: 575px) {
+  section {
+    grid-template-columns: repeat(1, 80%);
+  }
+}

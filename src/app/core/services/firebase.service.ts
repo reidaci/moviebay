@@ -22,7 +22,9 @@ export class FirebaseService {
     public auth: Auth,
     private route: Router,
     private firebase: Firestore
-  ) {}
+  ) {
+    this.userUid = localStorage.getItem('userId');
+  }
 
   handleRegister(email: string, password: string) {
     createUserWithEmailAndPassword(this.auth, email, password)
@@ -46,14 +48,13 @@ export class FirebaseService {
       });
   }
   addToFavorite(movies: object) {
-    const collectionInstance = collection(this.firebase, this.user);
+    const collectionInstance = collection(this.firebase, this.userUid);
     addDoc(collectionInstance, movies).then((res) => {
       console.log(this.user);
       console.log(res);
     });
   }
   getFavorites() {
-    this.userUid = localStorage.getItem('userId');
     const collectionInstance = collection(this.firebase, this.userUid);
     console.log(typeof this.user);
     // debugger;

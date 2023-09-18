@@ -47,9 +47,7 @@ export class MovieListComponent {
       (err: any) => console.log(err)
     );
   }
-  getFavorites() {
-    this.firebase.getFavorites();
-  }
+  
 
   addToFav(i: any) {
     console.log(i);

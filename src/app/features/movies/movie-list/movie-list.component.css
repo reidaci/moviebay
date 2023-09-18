@@ -77,9 +77,21 @@ section {
   transition: ease 0.3s;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
+  cursor: pointer;
 }
 .card:hover {
   transform: scale(1.05);
+}
+
+.rating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffbb2f;
+  padding: 0px 7px;
+  color: black;
+  border-bottom-right-radius: 10px;
 }
 
 img {
