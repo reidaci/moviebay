@@ -178,29 +178,29 @@
       </g>
     </svg>
     <div class="form-group1">
-      <label for="email">Email</label>
+      <label for="email"></label>
       <input
         type="email"
         id="email"
         name="email"
         [(ngModel)]="formData.email"
+        placeholder="Enter your email"
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
         required
       />
     </div>
     <div class="form-group2">
-      <label for="password">Password</label>
+      <label for="password"></label>
       <input
         type="password"
         id="password"
         name="password"
         [(ngModel)]="formData.password"
+        placeholder="Enter your password"
         required
       />
     </div>
-    <button
-      type="submit"
-      [disabled]="loginForm.invalid || !formData.email"
-    >
+    <button type="submit" [disabled]="loginForm.invalid || !formData.email">
       Login
     </button>
     <p>Dont have an account yet? <a routerLink="/signup">Sign Up</a></p>

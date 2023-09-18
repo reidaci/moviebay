@@ -16,5 +16,7 @@ export class SignUpComponent {
   constructor(public firebase: FirebaseService) {}
   signUp(email: string, pass: string) {
     this.firebase.handleRegister(email, pass);
+    this.formData.email = '';
+    this.formData.password = '';
   }
 }

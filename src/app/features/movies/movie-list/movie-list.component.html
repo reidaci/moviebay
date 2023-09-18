@@ -1,6 +1,12 @@
 <div class="container">
   <nav>
-    <button><a>Favourites</a></button>
+    <button
+      routerLink="/favoritesmovies"
+      (click)="getFavorites()"
+      style="color: #ffbb2f; background: transparent"
+    >
+      Favourites
+    </button>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -193,17 +199,29 @@
   </nav>
 
   <div class="content">
-    <aside>
+    <aside style="background-color: #176b87; padding-top: 70px">
       <div
         style="
           display: flex;
           flex-direction: column;
           align-items: center;
           padding-top: 10%;
+          border: none;
+          gap: 20px;
         "
         *ngFor="let x of categories"
       >
-        <button (click)="filterCategory(x)">{{ x }}</button>
+        <button
+          (click)="filterCategory(x)"
+          style="
+            border: none;
+            background: transparent;
+            color: #ffbb2f;
+            cursor: pointer;
+          "
+        >
+          {{ x }}
+        </button>
       </div>
     </aside>
 
@@ -216,7 +234,7 @@
               : {
                   id: 'foo',
                   itemsPerPage: 8,
-                  currentPage: p,
+                  currentPage: page,
                   totalItems: allMovies?.length,
                 }
         "
@@ -231,22 +249,27 @@
           <button class="success" (click)="addToFav(movie)">Add to fav</button>
         </div>
       </div>
-      <div>
-        <pagination-controls
-          id="foo"
-          (pageChange)="p = $event"
-          previousLabel="Previous"
-          nextLabel="Next"
-          screenReaderPaginationLabel="Pagination"
-          screenReaderPageLabel="page"
-          screenReaderCurrentLabel="You're on page"
-        >
-        </pagination-controls>
-      </div>
+      <div></div>
     </section>
 
-    <aside>
+    <aside style="background-color: #176b87">
       <p></p>
     </aside>
   </div>
+  <pagination-controls
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+    "
+    id="foo"
+    (pageChange)="page = $event"
+    previousLabel="Previous"
+    nextLabel="Next"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page"
+  >
+  </pagination-controls>
 </div>

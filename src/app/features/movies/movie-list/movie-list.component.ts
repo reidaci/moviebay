@@ -16,7 +16,7 @@ export class MovieListComponent {
   inputValue!: any;
   bestMovies: any;
   searchedMovies: any;
-  p: any = 1;
+  page: any = 1;
   categories: any = [
     'All movies',
     'Top Rated',
@@ -47,6 +47,10 @@ export class MovieListComponent {
       (err: any) => console.log(err)
     );
   }
+  getFavorites() {
+    this.firebase.getFavorites();
+  }
+
   addToFav(i: any) {
     console.log(i);
     this.firebase.addToFavorite(i);

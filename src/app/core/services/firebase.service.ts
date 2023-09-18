@@ -4,7 +4,12 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  addDoc,
+  getDocs,
+} from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -12,6 +17,7 @@ import { Router } from '@angular/router';
 })
 export class FirebaseService {
   user!: any;
+  userUid: any;
   constructor(
     public auth: Auth,
     private route: Router,
@@ -44,6 +50,19 @@ export class FirebaseService {
     addDoc(collectionInstance, movies).then((res) => {
       console.log(this.user);
       console.log(res);
+    });
+  }
+  getFavorites() {
+    this.userUid = localStorage.getItem('userId');
+    const collectionInstance = collection(this.firebase, this.userUid);
+    console.log(typeof this.user);
+    // debugger;
+    getDocs(collectionInstance).then((response) => {
+      console.log(
+        response.docs.map((item) => {
+          return { ...item.data(), id: item.id };
+        })
+      );
     });
   }
 }
