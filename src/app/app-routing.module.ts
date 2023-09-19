@@ -5,6 +5,7 @@ import { SignUpComponent } from './features/sign-up/sign-up/sign-up.component';
 import { MovieListComponent } from './features/movies/movie-list/movie-list.component';
 import { AuthGuard } from './core/guards/login.guard';
 import { FavoritesMoviesComponent } from './features/favorites/favorites-movies/favorites-movies.component';
+import { AdminPageComponent } from './features/admin/admin-page/admin-page.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -20,7 +21,13 @@ const routes: Routes = [
     component: FavoritesMoviesComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'adminpage',
+    component: AdminPageComponent,
+    canActivate: [AuthGuard]
+  },
   { path: '**', redirectTo: 'login' },
+
 ];
 
 @NgModule({

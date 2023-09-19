@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
+  getAuth,
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
 import {
@@ -12,6 +13,8 @@ import {
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
+// const adminMovieBay = 'lPphCLTxhWNsNEfSc4wNm6Ui0f33';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -20,7 +23,7 @@ export class FirebaseService {
   userUid: any;
   constructor(
     public auth: Auth,
-    private route: Router,
+    private router: Router,
     private firebase: Firestore
   ) {
     this.userUid = localStorage.getItem('userId');
@@ -39,9 +42,16 @@ export class FirebaseService {
     signInWithEmailAndPassword(this.auth, email, password)
       .then((res: any) => {
         this.user = res.user.uid;
-        localStorage.setItem('userId', this.user);
-        console.log(this.user);
-        this.route.navigate(['/movielist']);
+
+        if (this.user === 'lPphCLTxhWNsNEfSc4wNm6Ui0f33') {
+          localStorage.setItem('userId', this.user);
+          this.router.navigate(['/adminpage']);
+          // localStorage.removeItem('userId');
+        } else {
+          localStorage.setItem('userId', this.user);
+          console.log(this.user);
+          this.router.navigate(['/movielist']);
+        }
       })
       .catch((err) => {
         console.log(err);

@@ -22,6 +22,7 @@ import {
 import { MoviesService } from './core/services/movies.service';
 import { FirebaseService } from './core/services/firebase.service';
 import { FavoritesMoviesComponent } from './features/favorites/favorites-movies/favorites-movies.component';
+import { AdminPageComponent } from './features/admin/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FavoritesMoviesComponent } from './features/favorites/favorites-movies/
     LoginComponent,
     SignUpComponent,
     FavoritesMoviesComponent,
+    AdminPageComponent,
   ],
   imports: [
     BrowserModule,
