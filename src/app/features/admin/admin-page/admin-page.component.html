@@ -1,24 +1,43 @@
 <section class="admin">
-  <div class="">
-    <button>
-      <input type="text" />
-      Remove Movie
-    </button>
+  <div>
+    <input type="text" [(ngModel)]="rank" placeholder="Rank" />
   </div>
-  <div class="">
-    <input type="text" />
-    <button>Add Movie</button>
+  <div>
+    <input type="text" [(ngModel)]="title" placeholder="Title" />
   </div>
-  <div class="">
-    <input type="text" />
-    <button>Remove User</button>
+  <div>
+    <input type="text" [(ngModel)]="description" placeholder="Description" />
   </div>
-  <div class="">
-    <input type="text" />
-    <button>Remove category</button>
+  <div>
+    <input type="text" [(ngModel)]="image" placeholder="Image URL" />
   </div>
-  <div class="">
-    <input type="text" />
-    <button>Add Category</button>
+  <div>
+    <input type="text" [(ngModel)]="genre" placeholder="Genre" />
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="thumbnail" placeholder="Thumbnail URL" />
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="rating" placeholder="Rating" />
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="id" placeholder="ID" />
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="year" placeholder="Year" maxlength="4" />
+  </div>
+  <div>
+    <button (click)="addMovie()">Add Movie</button>
   </div>
 </section>
+
+<div class="users-list">
+  <ul *ngFor="let user of usersList">
+    <li>{{ user.email }}</li>
+  </ul>
+</div>
+
+<div>
+  <input type="text" [(ngModel)]="movieIdToDelete" placeholder="Movie ID" />
+  <button (click)="removeMovie(movieIdToDelete)">Remove Movie</button>
+</div>

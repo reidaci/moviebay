@@ -248,6 +248,9 @@
           <span>{{ movie.year }}</span>
 
           <button class="success" (click)="addToFav(movie)">Add to fav</button>
+          <button class="success" [routerLink]="[movie.id + '/movie-details']">
+            shko
+          </button>
         </div>
       </div>
       <div></div>

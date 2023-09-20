@@ -6,6 +6,7 @@ import { MovieListComponent } from './features/movies/movie-list/movie-list.comp
 import { AuthGuard } from './core/guards/login.guard';
 import { FavoritesMoviesComponent } from './features/favorites/favorites-movies/favorites-movies.component';
 import { AdminPageComponent } from './features/admin/admin-page/admin-page.component';
+import { MovieDetailsComponent } from './features/movies/movie-details/movie-details/movie-details.component';
 // import { AdminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
@@ -13,8 +14,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   {
-    path: 'movielist',
-    component: MovieListComponent,
+    path: 'movies',
+    children: [
+      { path: '', component: MovieListComponent },
+      { path: ':id/movie-details', component: MovieDetailsComponent },
+    ],
     canActivate: [AuthGuard],
   },
   {

@@ -32,6 +32,7 @@ export class FavoritesMoviesComponent {
       );
     });
   }
+
   logOut() {
     localStorage.removeItem('userId');
   }
