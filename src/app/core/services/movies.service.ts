@@ -12,4 +12,11 @@ export class MoviesService {
       'https://moviebay-71cc8-default-rtdb.europe-west1.firebasedatabase.app/.json'
     );
   }
+
+  getMovieDetails(id: any) {
+    return this.http.get(
+      'https://moviebay-71cc8-default-rtdb.europe-west1.firebasedatabase.app/.json.' +
+        id
+    );
+  }
 }

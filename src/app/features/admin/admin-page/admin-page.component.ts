@@ -6,6 +6,8 @@ import {
   update,
   getDatabase,
   remove,
+  push,
+  child,
 } from '@angular/fire/database';
 import { Auth, getAuth } from '@angular/fire/auth';
 import { FirebaseService } from 'src/app/core/services/firebase.service';
@@ -37,7 +39,7 @@ import { User } from 'src/app/core/models/user';
   styleUrls: ['./admin-page.component.css'],
 })
 export class AdminPageComponent {
-  rank: number = 0; // Initialize with default value
+  rank!: any; // Initialize with default value
   title: string = '';
   description: string = '';
   image: string = '';
@@ -45,7 +47,7 @@ export class AdminPageComponent {
   thumbnail: string = '';
   rating: string = '';
   id: string = '';
-  year: number = 0; // Initialize with default value
+  year: string = ''; // Initialize with default value
   movieIdToDelete: string = '';
   usersList: any[] = [];
 
@@ -72,16 +74,55 @@ export class AdminPageComponent {
       year: this.year,
     };
 
+    //TO DO instead  of /movies increment
+
     set(ref(db, '/movies/' + this.id), movieData).then(() => {
+      this.rank = '';
+      this.title = '';
+      this.description = '';
+      this.image = '';
+      this.genre = '';
+      this.thumbnail = '';
+      this.rating = '';
+      this.id = '';
+      this.year = '';
       console.log('Movie added to the database.'); // You can add error handling as needed
     });
   }
+  // writeNewPost() {
+  //   const db = getDatabase();
+
+  //   // A post entry.
+  //   const postData = {
+  //     rank: this.rank,
+  //     title: this.title,
+  //     description: this.description,
+  //     image: this.image,
+  //     genre: this.genre,
+  //     thumbnail: this.thumbnail,
+  //     rating: this.rating,
+  //     id: this.id,
+  //     year: this.year,
+  //   };
+
+  //   // Get a key for a new Post.
+  //   const newPostKey = push(child(ref(db), 'movies')).key;
+
+  //   // Write the new post's data simultaneously in the posts list and the user's post list.
+  //   const updates = {};
+  //   updates['/movies/' + newPostKey] = postData;
+  //   updates['/movies/' + uid + '/' + newPostKey] = postData;
+
+  //   return update(ref(db), updates);
+  // }
+
   removeMovie(id: string) {
     const db = getDatabase();
 
     // Use the 'remove' method to delete a movie by its ID
     remove(ref(db, '/movies/' + id))
       .then(() => {
+        this.movieIdToDelete = '';
         console.log('Movie removed from the database.');
       })
       .catch((error: any) => {
@@ -105,12 +146,20 @@ export class AdminPageComponent {
     getDocs(collectionInstance).then((response) => {
       console.log(
         response.docs.map((item) => {
-          debugger;
-          // return { ...item.data(), id: item.id };
           this.usersList.push({ ...item.data(), id: item.id });
           console.log(this.usersList);
         })
       );
     });
+  }
+
+  logOut() {
+    localStorage.removeItem('userId');
+  }
+
+  async deleteUsers(id: string) {
+    const collectionInstance = collection(this.firebase, '/users');
+    await deleteDoc(doc(collectionInstance, id));
+    window.location.reload();
   }
 }

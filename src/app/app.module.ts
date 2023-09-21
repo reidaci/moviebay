@@ -24,6 +24,10 @@ import { FirebaseService } from './core/services/firebase.service';
 import { FavoritesMoviesComponent } from './features/favorites/favorites-movies/favorites-movies.component';
 import { AdminPageComponent } from './features/admin/admin-page/admin-page.component';
 import { MovieDetailsComponent } from './features/movies/movie-details/movie-details/movie-details.component';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 @NgModule({
   declarations: [
@@ -48,8 +52,10 @@ import { MovieDetailsComponent } from './features/movies/movie-details/movie-det
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     NgxPaginationModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
   ],
-  providers: [MoviesService, FirebaseService],
+  providers: [MoviesService, FirebaseService, AngularFireDatabase],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

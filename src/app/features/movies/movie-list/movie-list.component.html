@@ -229,13 +229,14 @@
         class="card"
         *ngFor="
           let movie of allMovies
-            | paginate
+                   | paginate
               : {
                   id: 'foo',
                   itemsPerPage: 8,
                   currentPage: page,
                   totalItems: allMovies?.length,
-                }
+                };
+              index as i
         "
       >
         <span class="rating">{{ movie.rating }}</span>
@@ -247,10 +248,9 @@
           <p>{{ movie.genre }}</p>
           <span>{{ movie.year }}</span>
 
-          <button class="success" (click)="addToFav(movie)">Add to fav</button>
-          <button class="success" [routerLink]="[movie.id + '/movie-details']">
-            shko
-          </button>
+          <button class="addToFav" (click)="addToFav(movie)">Add to fav</button>
+          <!--         <button class="go" [routerLink]="[i + '/movie-details']">shko</button> -->
+          <button class="go" (click)="getDetails(i)">shko</button>
         </div>
       </div>
       <div></div>

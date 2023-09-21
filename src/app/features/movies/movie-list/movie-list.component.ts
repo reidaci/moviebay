@@ -4,6 +4,18 @@ import { FirebaseService } from 'src/app/core/services/firebase.service';
 import { MoviesService } from './../../../core/services/movies.service';
 import { Component } from '@angular/core';
 
+import {
+  getDatabase,
+  ref,
+  onValue,
+  // AngularFireDatabase,
+} from '@angular/fire/database';
+import { Router } from '@angular/router';
+import {
+  AngularFireDatabase,
+  AngularFireDatabaseModule,
+} from '@angular/fire/compat/database';
+
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
@@ -35,19 +47,20 @@ export class MovieListComponent {
   ];
   constructor(
     private movieservice: MoviesService,
-    private firebase: FirebaseService
+    private firebase: FirebaseService,
+    private router: Router,
+    private agdb: AngularFireDatabase
   ) {}
   ngOnInit() {
     this.movieservice.getMovies().subscribe(
       (res: any) => {
         this.allMovies = res;
         this.filterMovies = res;
-        console.log(this.allMovies.length);
+        console.log(this.allMovies);
       },
       (err: any) => console.log(err)
     );
   }
-  
 
   addToFav(i: any) {
     console.log(i);
@@ -91,5 +104,27 @@ export class MovieListComponent {
         moviesFound?.title.toLowerCase().includes(this.inputValue.toLowerCase())
       );
     }
+  }
+
+  getDetails(i: any) {
+    console.log(this.agdb.object(i));
+
+    this.router.navigate(['/movies/' + i + '/movie-details']);
+    const db = getDatabase();
+    const starCountRef = ref(db);
+    // debugger;
+    console.log(starCountRef);
+    onValue(starCountRef, (snapshot) => {
+      console.log(snapshot);
+      debugger;
+      const data = snapshot.val();
+      console.log(data);
+    });
+    //     this.movieservice.getMovieDetails(0).subscribe(
+    //   (res: any) => {
+    //     debugger;
+    //   },
+    //   (err: any) => console.log(err)
+    // );
   }
 }

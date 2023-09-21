@@ -94,6 +94,12 @@ section {
   border-bottom-right-radius: 10px;
 }
 
+.addToFav {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 img {
   max-width: 100%;
 }

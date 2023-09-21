@@ -1,6 +1,192 @@
 .admin {
-  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #176b87;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  flex-direction: column; */
+}
+
+.helloAdmin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  background-color: #053b50;
+  width: 100%;
+  box-shadow: 0px 7px 17px 0px rgba(0, 0, 0, 0.75);
+}
+
+svg {
+  height: 70px;
+  width: 120px;
+}
+
+h3 {
+  color: #eeeeee;
+}
+
+i {
+  color: #ffbb2f;
+  cursor: pointer;
+  transition: ease 0.3s;
+  font-size: 25px;
+}
+
+i:hover {
+  transform: scale(1.2);
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ffbb2f;
+}
+
+.addMovieInputs {
+  width: 50%;
+  float: left;
+}
+.inputGridWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, calc((100% / 3) - (20px / 3)));
+  gap: 10px;
+}
+
+.movieTitle {
+  grid-column: 2 / span 2;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  margin-top: 10px;
+}
+
+.addMovieInputs input,
+textarea {
+  border-radius: 10px;
+  border: none;
+  color: #053b50;
+  font-weight: 600;
+  background-color: #eeeeee;
+  padding: 5px 10px;
+  outline: 0;
+  caret-color: #053b50;
+}
+
+.addMovieInputs input::placeholder,
+textarea::placeholder {
+  color: #053b50;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.addMovieInputs button {
+  border: none;
+  margin: 0 auto;
+  display: block;
+  float: none;
+  padding: 5px 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: #ffbb2f;
+  color: #053b50;
+  font-weight: 700;
+  transition: ease 0.5s;
+  cursor: pointer;
+}
+
+.addMovieInputs button:hover {
+  transform: scale(0.9);
+}
+
+hr {
+  width: 100%;
+  float: left;
+  margin: 30px 0;
+  border-color: #ffffff4d;
+}
+
+.removeMovies {
+  width: 50%;
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px; */
+}
+
+.removeMoviesContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.movieID {
+  grid-column: 1 / span 2;
+}
+
+.removeMovies input {
+  border-radius: 10px;
+  border: none;
+  color: #053b50;
+  font-weight: 600;
+  padding: 5px 10px;
+  outline: 0;
+  caret-color: #053b50;
+}
+
+.removeMovies input::placeholder {
+  color: #053b50;
+  font-weight: 700;
+}
+
+.removeMovies button {
+  border: none;
+  padding: 5px 15px;
+  border-radius: 10px;
+  background-color: #ffbb2f;
+  color: #053b50;
+  font-weight: 700;
+  transition: ease 0.5s;
+  cursor: pointer;
+}
+
+.removeMovies button:hover {
+  transform: scale(0.9);
+}
+
+.users-list {
+  width: 50%;
+}
+.users-list table {
+  width: 100%;
+  text-align: left;
+  color: white;
+}
+.users-list th {
+  border-bottom: 1px solid #ffffff4d;
+  padding-bottom: 5px;
+}
+.users-list th:last-child,
+.users-list td:last-child {
+  text-align: right;
+}
+.users-list td {
+  padding: 3px 0;
+}
+.users-list tr:nth-child(2) td {
+  padding-top: 7px;
+}
+.users-list i {
+  font-size: 20px;
 }
