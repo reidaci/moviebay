@@ -23,8 +23,8 @@ import {
 })
 export class MovieListComponent {
   // allMovies = this.movieservice.getMovies();
-  allMovies: any;
-  filterMovies: any;
+  allMovies!: any;
+  filterMovies!: Array<Object>;
   inputValue!: any;
   bestMovies: any;
   searchedMovies: any;
@@ -53,10 +53,18 @@ export class MovieListComponent {
   ) {}
   ngOnInit() {
     this.movieservice.getMovies().subscribe(
-      (res: any) => {
-        this.allMovies = res;
-        this.filterMovies = res;
-        console.log(this.allMovies);
+      (res: object) => {
+        console.log(res);
+        // this.allMovies = res;
+        this.filterMovies = Object.entries(res).map(([key, value]) => ({
+          key,
+          ...value,
+        }));
+        this.allMovies = this.filterMovies;
+
+        // this.filterMovies = res;
+
+        console.log('tipi array me objects', this.filterMovies);
       },
       (err: any) => console.log(err)
     );
@@ -107,24 +115,39 @@ export class MovieListComponent {
   }
 
   getDetails(i: any) {
-    console.log(this.agdb.object(i));
-
-    this.router.navigate(['/movies/' + i + '/movie-details']);
-    const db = getDatabase();
-    const starCountRef = ref(db);
-    // debugger;
-    console.log(starCountRef);
-    onValue(starCountRef, (snapshot) => {
-      console.log(snapshot);
-      debugger;
-      const data = snapshot.val();
-      console.log(data);
+    console.log(i);
+    this.router.navigate(['/movies/movie-details', i.id], {
+      queryParams: {
+        description: i.description,
+        genre: i.genre,
+        id: i.id,
+        image: i.image,
+        rank: i.rank,
+        rating: i.rating,
+        thumbnail: i.thumbnail,
+        title: i.title,
+        year: i.year,
+      },
     });
-    //     this.movieservice.getMovieDetails(0).subscribe(
-    //   (res: any) => {
+
+    //   console.log(this.agdb.object(i));
+
+    //   this.router.navigate(['/movies/' + i + '/movie-details']);
+    //   const db = getDatabase();
+    //   const starCountRef = ref(db);
+    //   // debugger;
+    //   console.log(starCountRef);
+    //   onValue(starCountRef, (snapshot) => {
+    //     console.log(snapshot);
     //     debugger;
-    //   },
-    //   (err: any) => console.log(err)
-    // );
+    //     const data = snapshot.val();
+    //     console.log(data);
+    //   });
+    //   //     this.movieservice.getMovieDetails(0).subscribe(
+    //   //   (res: any) => {
+    //   //     debugger;
+    //   //   },
+    //   //   (err: any) => console.log(err)
+    //   // );
   }
 }

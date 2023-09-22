@@ -20,6 +20,7 @@ import {
 } from '@angular/fire/firestore';
 import { deleteDoc, doc } from '@angular/fire/firestore';
 import { User } from 'src/app/core/models/user';
+import { HttpClient } from '@angular/common/http';
 
 // const allDetails = rank: number,
 // title: string,
@@ -52,6 +53,7 @@ export class AdminPageComponent {
   usersList: any[] = [];
 
   constructor(
+    private http: HttpClient,
     public database: Database,
     private auth: Auth,
     private myService: FirebaseService,
@@ -61,7 +63,7 @@ export class AdminPageComponent {
   }
 
   addMovie() {
-    const db = getDatabase();
+    // const db = getDatabase();
     const movieData = {
       rank: this.rank,
       title: this.title,
@@ -75,19 +77,26 @@ export class AdminPageComponent {
     };
 
     //TO DO instead  of /movies increment
-
-    set(ref(db, '/movies/' + this.id), movieData).then(() => {
-      this.rank = '';
-      this.title = '';
-      this.description = '';
-      this.image = '';
-      this.genre = '';
-      this.thumbnail = '';
-      this.rating = '';
-      this.id = '';
-      this.year = '';
-      console.log('Movie added to the database.'); // You can add error handling as needed
-    });
+    this.http
+      .post(
+        'https://moviebay-71cc8-default-rtdb.europe-west1.firebasedatabase.app/.json',
+        movieData
+      )
+      .subscribe((res) => {
+        console.log(res);
+      });
+    // set(ref(db, '/movies/' + this.id), movieData).then(() => {
+    //   this.rank = '';
+    //   this.title = '';
+    //   this.description = '';
+    //   this.image = '';
+    //   this.genre = '';
+    //   this.thumbnail = '';
+    //   this.rating = '';
+    //   this.id = '';
+    //   this.year = '';
+    //   console.log('Movie added to the database.'); // You can add error handling as needed
+    // });
   }
   // writeNewPost() {
   //   const db = getDatabase();
@@ -120,7 +129,7 @@ export class AdminPageComponent {
     const db = getDatabase();
 
     // Use the 'remove' method to delete a movie by its ID
-    remove(ref(db, '/movies/' + id))
+    remove(ref(db, id))
       .then(() => {
         this.movieIdToDelete = '';
         console.log('Movie removed from the database.');

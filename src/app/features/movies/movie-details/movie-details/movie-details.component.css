@@ -1,0 +1,9 @@
+.card {
+  margin-bottom: 30px;
+  background-color: #053b50;
+  transition: ease 0.3s;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
