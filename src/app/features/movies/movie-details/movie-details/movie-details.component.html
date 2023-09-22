@@ -1,14 +1,19 @@
 <section>
+  <i class="fa-solid fa-arrow-left" routerLink="/movies"></i>
+
   <div class="card">
     <div class="image">
       <img src="{{ image }}" alt="" />
     </div>
-    <span class="rating">{{ description }}</span>
-    <div class="details">
-      <h4>{{ title }}</h4>
-      <p>{{ genre }}</p>
-      <span>{{ year }}</span>
+    <div class="content">
+      <div class="details">
+        <div style="width: 100%; float: left; padding-bottom: calc(5px + 3px)">
+          <h2>{{ title }}</h2>
+        </div>
+        <p>{{ genre }}</p>
+        <span>{{ year }}</span>
+      </div>
+      <div class="descr">{{ description }}</div>
     </div>
   </div>
-  <div></div>
 </section>

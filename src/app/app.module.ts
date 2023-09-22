@@ -28,6 +28,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { LoaderComponent } from './features/loader/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     FavoritesMoviesComponent,
     AdminPageComponent,
     MovieDetailsComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

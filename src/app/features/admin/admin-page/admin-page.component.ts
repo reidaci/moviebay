@@ -86,15 +86,15 @@ export class AdminPageComponent {
         console.log(res);
       });
     // set(ref(db, '/movies/' + this.id), movieData).then(() => {
-    //   this.rank = '';
-    //   this.title = '';
-    //   this.description = '';
-    //   this.image = '';
-    //   this.genre = '';
-    //   this.thumbnail = '';
-    //   this.rating = '';
-    //   this.id = '';
-    //   this.year = '';
+    this.rank = '';
+    this.title = '';
+    this.description = '';
+    this.image = '';
+    this.genre = '';
+    this.thumbnail = '';
+    this.rating = '';
+    this.id = '';
+    this.year = '';
     //   console.log('Movie added to the database.'); // You can add error handling as needed
     // });
   }

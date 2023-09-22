@@ -23,6 +23,7 @@ import {
 })
 export class MovieListComponent {
   // allMovies = this.movieservice.getMovies();
+  isLoading = true;
   allMovies!: any;
   filterMovies!: Array<Object>;
   inputValue!: any;
@@ -68,6 +69,9 @@ export class MovieListComponent {
       },
       (err: any) => console.log(err)
     );
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
   }
 
   addToFav(i: any) {

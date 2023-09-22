@@ -1,9 +1,64 @@
-.card {
-  margin-bottom: 30px;
+section {
   background-color: #053b50;
-  transition: ease 0.3s;
-  border-radius: 10px;
-  overflow: hidden;
+  height: 100vh;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
   position: relative;
+}
+.card {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  color: white;
+}
+.image {
+  width: 40%;
+  float: left;
+}
+.content {
+  width: 60%;
+  float: left;
+}
+i {
+  color: #ffbb2f;
+  position: absolute;
+  top: 25px;
+  left: 30px;
   cursor: pointer;
+  transition: ease 0.3s;
+  font-size: 25px;
+}
+i:hover {
+  transform: scale(1.2);
+}
+
+h2 {
+  display: inline;
+  float: left;
+  position: relative;
+}
+h2:before {
+  content: "";
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 30%;
+  height: 3px;
+  background-color: #ffbb2f;
+}
+p {
+  width: 100%;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+span {
+  width: 100%;
+  float: left;
+}
+.descr {
+  width: 100%;
+  float: left;
+  margin-top: 30px;
 }

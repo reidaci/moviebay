@@ -2,7 +2,17 @@
   <nav>
     <button
       routerLink="/favoritesmovies"
-      style="color: #ffbb2f; background: transparent"
+      style="
+        color: #ffbb2f;
+        background: transparent;
+        color: #053b50;
+        background: #ffbb2f;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+      "
     >
       Favourites
     </button>
@@ -196,18 +206,16 @@
       ></i>
     </div>
   </nav>
-
-  <div class="content">
-    <aside style="background-color: #176b87; padding-top: 70px">
+  <div *ngIf="isLoading" style="text-align: center; margin-top: 250px">
+    <app-loader></app-loader>
+  </div>
+  <div class="content" *ngIf="!isLoading">
+    <aside
+      style="background-color: #176b87; padding-top: 50px; padding-left: 30px"
+    >
       <div
-        style="
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding-top: 10%;
-          border: none;
-          gap: 20px;
-        "
+        style="display: flex; flex-direction: column; border: none; gap: 20px"
+        class="favBtnsWrapper"
         *ngFor="let x of categories"
       >
         <button
@@ -215,8 +223,10 @@
           style="
             border: none;
             background: transparent;
-            color: #ffbb2f;
+            color: #efefef;
             cursor: pointer;
+            text-align: left;
+            font-size: 16px;
           "
         >
           {{ x }}
@@ -240,7 +250,7 @@
         "
       >
         <span class="rating">{{ movie.rating }}</span>
-        <div class="image">
+        <div class="image" (click)="getDetails(movie)">
           <img src="{{ movie.image }}" alt="" />
         </div>
         <div class="details">
@@ -248,9 +258,10 @@
           <p>{{ movie.genre }}</p>
           <span>{{ movie.year }}</span>
 
-          <button class="addToFav" (click)="addToFav(movie)">Add to fav</button>
+          <button class="addToFav" (click)="addToFav(movie)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
           <!--         <button class="go" [routerLink]="[i + '/movie-details']">shko</button> -->
-          <button class="go" (click)="getDetails(movie)">shko</button>
         </div>
       </div>
       <div></div>
@@ -261,6 +272,7 @@
     </aside>
   </div>
   <pagination-controls
+    *ngIf="!isLoading"
     style="
       display: flex;
       justify-content: center;

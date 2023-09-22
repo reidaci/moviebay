@@ -189,7 +189,10 @@
       ></i>
     </div>
   </nav>
-  <section>
+  <div *ngIf="isLoading" style="text-align: center; margin-top: 250px">
+    <app-loader></app-loader>
+  </div>
+  <section *ngIf="!isLoading">
     <div *ngFor="let fav of favArray" class="card">
       <div class="image">
         <img src="{{ fav.image }}" alt="" class="" />
@@ -198,7 +201,9 @@
         <h4>{{ fav.title }}</h4>
         <p>{{ fav.genre }}</p>
         <span>{{ fav.year }}</span>
-        <button class="success" (click)="removeFromFav(fav.id)">Remove</button>
+        <button class="removeButton" (click)="removeFromFav(fav.id)">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
     </div>
   </section>

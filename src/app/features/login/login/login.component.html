@@ -1,5 +1,20 @@
 <div class="login-container">
+  <div *ngIf="isLoading" style="text-align: center">
+    <app-loader></app-loader>
+  </div>
+  <h2
+    style="
+      color: #eeeeee;
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    "
+  >
+    Login
+  </h2>
+
   <form
+    *ngIf="!isLoading"
     (ngSubmit)="logIn(loginForm.value.email, loginForm.value.password)"
     #loginForm="ngForm"
   >

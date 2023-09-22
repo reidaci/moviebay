@@ -1,5 +1,19 @@
 <div class="signup-container">
+  <div *ngIf="isLoading" style="text-align: center">
+    <app-loader></app-loader>
+  </div>
+  <h2
+    style="
+      color: #eeeeee;
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    "
+  >
+    Sign Up
+  </h2>
   <form
+    *ngIf="!isLoading"
     #signup="ngForm"
     (ngSubmit)="signUp(signup.value.email, signup.value.password)"
   >

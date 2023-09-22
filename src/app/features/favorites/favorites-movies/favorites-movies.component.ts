@@ -15,9 +15,18 @@ import { deleteDoc, doc } from '@angular/fire/firestore';
 export class FavoritesMoviesComponent {
   favArray: any = [];
   userUid: any;
+  isLoading: boolean = true;
 
   constructor(private firebase: Firestore) {
     this.getFavs();
+  }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
   }
 
   getFavs() {

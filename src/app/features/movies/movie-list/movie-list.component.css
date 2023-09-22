@@ -78,10 +78,32 @@ section {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  cursor: pointer;
 }
 .card:hover {
   transform: scale(1.05);
+}
+
+.image {
+  position: relative;
+  cursor: pointer;
+}
+.image:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(../../../../assets/images/play-button.svg);
+  background-position: center center;
+  background-size: initial;
+  background-repeat: no-repeat;
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+.image:hover:before {
+  opacity: 1;
 }
 
 .rating {
@@ -89,15 +111,28 @@ section {
   top: 0;
   left: 0;
   background-color: #ffbb2f;
-  padding: 0px 7px;
+  padding: 4px 7px;
   color: black;
   border-bottom-right-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 1;
 }
 
 .addToFav {
   position: absolute;
   top: 0;
   right: 0;
+  padding: 2px 7px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: none;
+  background: #ffbb2f;
+}
+
+.addToFav i {
+  color: #053b50 !important;
+  font-size: 20px;
 }
 
 img {
@@ -111,6 +146,10 @@ h4,
 p,
 span {
   color: #eeeeee;
+}
+
+.favBtnsWrapper:not(:first-child) {
+  padding-top: 20px;
 }
 @media only screen and (max-width: 991px) {
   section {
