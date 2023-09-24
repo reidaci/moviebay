@@ -258,8 +258,8 @@
           <p>{{ movie.genre }}</p>
           <span>{{ movie.year }}</span>
 
-          <button class="addToFav" (click)="addToFav(movie)">
-            <i class="fa-regular fa-heart"></i>
+          <button class="addToFav">
+            <i class="fa-regular fa-heart" (click)="addToFav(movie)"></i>
           </button>
           <!--         <button class="go" [routerLink]="[i + '/movie-details']">shko</button> -->
         </div>

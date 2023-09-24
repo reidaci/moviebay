@@ -12,6 +12,9 @@
   >
     Sign Up
   </h2>
+  <div *ngIf="isSignedUp">
+    <p>Welcome to MovieBay!</p>
+  </div>
   <form
     *ngIf="!isLoading"
     #signup="ngForm"
@@ -216,6 +219,7 @@
       />
     </div>
     <button type="submit" [disabled]="!formData.email">Sign Up</button>
+
     <p>You have an account? <a routerLink="/login">Log in</a></p>
   </form>
 </div>

@@ -10,6 +10,7 @@ import { timeout } from 'rxjs';
 })
 export class SignUpComponent {
   isLoading = true;
+  isSignedUp = false;
   title = 'angular-firebase';
   formData = {
     email: '',
@@ -27,5 +28,9 @@ export class SignUpComponent {
 
     this.formData.email = '';
     this.formData.password = '';
+    this.isSignedUp = true;
+    setTimeout(() => {
+      this.isSignedUp = false;
+    }, 3000);
   }
 }
