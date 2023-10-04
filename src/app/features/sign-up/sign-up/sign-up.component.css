@@ -109,3 +109,11 @@ a {
   color: #ffbb2f;
   font-weight: 800;
 }
+
+.eyeicon {
+  cursor: pointer;
+}
+
+.signup {
+  cursor: pointer;
+}

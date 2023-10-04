@@ -151,6 +151,28 @@ span {
 .favBtnsWrapper:not(:first-child) {
   padding-top: 20px;
 }
+
+.success-message {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  z-index: 999;
+  animation: fade-out 7s ease;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @media only screen and (max-width: 991px) {
   section {
     grid-template-columns: repeat(3, 28%);

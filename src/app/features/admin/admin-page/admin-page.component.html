@@ -193,7 +193,12 @@
           [(ngModel)]="title"
           placeholder="Title"
         />
-        <input type="text" [(ngModel)]="rank" placeholder="Rank" />
+        <input
+          type="text"
+          [(ngModel)]="rank"
+          placeholder="Rank"
+          pattern="^[0-9]+$"
+        />
 
         <input type="text" [(ngModel)]="image" placeholder="Image URL" />
         <input

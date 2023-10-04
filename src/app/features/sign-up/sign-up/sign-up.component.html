@@ -205,20 +205,25 @@
         placeholder="Enter your email"
         pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
         required
+        email
       />
     </div>
     <div class="form-group3">
       <label for="password"></label>
       <input
+        [type]="changetype ? 'password' : 'text'"
+        placeholder="Enter your password"
         type="password"
         id="password"
         name="password"
         [(ngModel)]="formData.password"
-        placeholder="Enter your password"
         required
       />
+      <span class="eyeicon" (click)="viewpass()"
+        ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i
+      ></span>
     </div>
-    <button type="submit" [disabled]="!formData.email">Sign Up</button>
+    <button class="signup"  type="submit" [disabled]="!formData">Sign Up</button>
 
     <p>You have an account? <a routerLink="/login">Log in</a></p>
   </form>

@@ -13,6 +13,8 @@ export class LoginComponent {
     password: '',
   };
   isLoading: boolean = true;
+  visible: boolean = true;
+  changetype: boolean = true;
 
   constructor(
     private firebase: FirebaseService,
@@ -21,7 +23,10 @@ export class LoginComponent {
   ) {
     getMovies.getMovies();
   }
-
+  viewpass() {
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
+  }
   ngOnInit(): any {
     setTimeout(() => {
       this.isLoading = false;

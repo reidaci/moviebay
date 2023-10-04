@@ -258,13 +258,19 @@
           <p>{{ movie.genre }}</p>
           <span>{{ movie.year }}</span>
 
-          <button class="addToFav">
-            <i class="fa-regular fa-heart" (click)="addToFav(movie)"></i>
+          <button class="addToFav" (click)="addToFav(movie)">
+            <i class="fa-regular fa-heart"></i>
           </button>
+
           <!--         <button class="go" [routerLink]="[i + '/movie-details']">shko</button> -->
         </div>
       </div>
-      <div></div>
+
+      <div>
+        <div *ngIf="addToFavoritesMessageVisible" class="success-message">
+          Successfully added to favorites!
+        </div>
+      </div>
     </section>
 
     <aside style="background-color: #176b87">

@@ -30,6 +30,7 @@ export class MovieListComponent {
   bestMovies: any;
   searchedMovies: any;
   page: any = 1;
+  addToFavoritesMessageVisible = false;
   categories: any = [
     'All movies',
     'Top Rated',
@@ -77,6 +78,10 @@ export class MovieListComponent {
   addToFav(i: any) {
     console.log(i);
     this.firebase.addToFavorite(i);
+    this.addToFavoritesMessageVisible = true;
+    setTimeout(() => {
+      this.addToFavoritesMessageVisible = false;
+    }, 3000);
   }
 
   logOut() {

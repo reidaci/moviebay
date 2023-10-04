@@ -11,6 +11,9 @@ import { timeout } from 'rxjs';
 export class SignUpComponent {
   isLoading = true;
   isSignedUp = false;
+  visible: boolean = true;
+  changetype: boolean = true;
+
   title = 'angular-firebase';
   formData = {
     email: '',
@@ -23,6 +26,10 @@ export class SignUpComponent {
     }, 500);
   }
 
+  viewpass() {
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
+  }
   signUp(email: string, pass: string) {
     this.firebase.handleRegister(email, pass);
 

@@ -207,15 +207,22 @@
     <div class="form-group2">
       <label for="password"></label>
       <input
-        type="password"
+        [type]="changetype ? 'password' : 'text'"
+        placeholder="Enter your password"
         id="password"
         name="password"
         [(ngModel)]="formData.password"
-        placeholder="Enter your password"
         required
       />
+      <span class="eyeicon" (click)="viewpass()"
+        ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i
+      ></span>
     </div>
-    <button type="submit" [disabled]="loginForm.invalid || !formData.email">
+    <button
+      class="login"
+      type="submit"
+      [disabled]="loginForm.invalid || !formData.email"
+    >
       Login
     </button>
     <p>Dont have an account yet? <a routerLink="/signup">Sign Up</a></p>
