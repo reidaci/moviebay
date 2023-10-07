@@ -21,7 +21,8 @@ import { Router } from '@angular/router';
 export class FirebaseService {
   user!: any;
   userUid: any;
-
+  errorMsg: string = '';
+  successMsg = '';
   constructor(
     public auth: Auth,
     private router: Router,
@@ -47,9 +48,16 @@ export class FirebaseService {
           console.log(user);
           console.log(res);
         });
+        this.successMsg = 'Welcome to MovieBay!';
       })
       .catch((err) => {
-        console.log(err.message);
+        this.errorMsg = err.message;
+        if (
+          this.errorMsg ===
+          'Firebase: Password should be at least 6 characters (auth/weak-password).'
+        ) {
+          this.errorMsg = 'Password should be at least 6 characters';
+        }
       });
   }
 

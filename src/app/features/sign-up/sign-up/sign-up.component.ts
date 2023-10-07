@@ -1,7 +1,8 @@
 import { FirebaseService } from './../../../core/services/firebase.service';
 import { User } from './../../../core/models/user';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { timeout } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,7 @@ export class SignUpComponent {
   isSignedUp = false;
   visible: boolean = true;
   changetype: boolean = true;
-
+  @ViewChild('signup') signUpForm!: NgForm;
   title = 'angular-firebase';
   formData = {
     email: '',
@@ -31,13 +32,14 @@ export class SignUpComponent {
     this.changetype = !this.changetype;
   }
   signUp(email: string, pass: string) {
+    if (this.signUpForm.invalid) return;
     this.firebase.handleRegister(email, pass);
 
-    this.formData.email = '';
-    this.formData.password = '';
-    this.isSignedUp = true;
+    console.log(this.signUpForm.controls);
     setTimeout(() => {
-      this.isSignedUp = false;
+      this.signUpForm.resetForm();
+      this.firebase.errorMsg = '';
+      this.firebase.successMsg = '';
     }, 3000);
   }
 }
