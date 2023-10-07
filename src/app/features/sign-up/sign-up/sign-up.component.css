@@ -60,6 +60,7 @@ form {
   flex-direction: column;
   gap: 5px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 input {
@@ -110,25 +111,25 @@ a {
   font-weight: 800;
 }
 
-.eyeicon {
+/* .eyeicon {
   cursor: pointer;
-}
+} */
 
 .signup {
   cursor: pointer;
 }
 
-#password {
+/* .password {
   position: relative !important;
-}
+} */
 
 .labelPassword {
   position: absolute;
-  right: 550px;
-  bottom: 248px;
+  right: 10px;
+  top: 5px;
   z-index: 10;
 }
 
-/* .validationMsg {
-  color: red;
-} */
+.validationMsg {
+  color: rgb(35, 25, 25);
+}

@@ -46,13 +46,14 @@ form {
   gap: 5px;
 }
 
-.form-group2 {
+.form-group3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   gap: 5px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 input {
@@ -114,17 +115,17 @@ a {
   cursor: pointer;
 }
 
-#password {
+/* #password {
   position: relative !important;
-}
+} */
 
 .labelPassword {
   position: absolute;
-  right: 550px;
-  bottom: 248px;
+  right: 10px;
+  top: 5px;
   z-index: 10;
 }
 
-/* .validationMsg {
+.validationMsg {
   color: red;
-} */
+}

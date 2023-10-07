@@ -222,21 +222,21 @@
       </p>
     </div>
     <div class="form-group3">
-      <label for="password" class="labelPassword">
-        <span class="eyeicon" (click)="viewpass()"
-          ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i
-        ></span>
-      </label>
+      <!-- <label for="password" class=""> </label> -->
       <input
         [type]="changetype ? 'password' : 'text'"
         placeholder="Enter your password"
         type="password"
         id="password"
         name="password"
+        class="password"
         [(ngModel)]="formData.password"
         required
         #password="ngModel"
       />
+      <span class="labelPassword" (click)="viewpass()"
+        ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i
+      ></span>
       <p class="validationMsg" *ngIf="firebase.errorMsg">
         {{ firebase.errorMsg }}
       </p>
