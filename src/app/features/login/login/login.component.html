@@ -205,7 +205,10 @@
       />
     </div>
     <div class="form-group2">
-      <label for="password"></label>
+      <label for="password" class="labelPassword"
+        ><span class="eyeicon" (click)="viewpass()"
+          ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i></span
+      ></label>
       <input
         [type]="changetype ? 'password' : 'text'"
         placeholder="Enter your password"
@@ -214,9 +217,6 @@
         [(ngModel)]="formData.password"
         required
       />
-      <span class="eyeicon" (click)="viewpass()"
-        ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i
-      ></span>
     </div>
     <button
       class="login"

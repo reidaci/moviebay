@@ -209,7 +209,11 @@
       />
     </div>
     <div class="form-group3">
-      <label for="password"></label>
+      <label for="password" class="labelPassword">
+        <span class="eyeicon" (click)="viewpass()"
+          ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i
+        ></span>
+      </label>
       <input
         [type]="changetype ? 'password' : 'text'"
         placeholder="Enter your password"
@@ -219,11 +223,8 @@
         [(ngModel)]="formData.password"
         required
       />
-      <span class="eyeicon" (click)="viewpass()"
-        ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i
-      ></span>
     </div>
-    <button class="signup"  type="submit" [disabled]="!formData">Sign Up</button>
+    <button class="signup" type="submit" [disabled]="!formData">Sign Up</button>
 
     <p>You have an account? <a routerLink="/login">Log in</a></p>
   </form>

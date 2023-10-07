@@ -87,6 +87,13 @@ section {
   position: relative;
   cursor: pointer;
 }
+
+/* .image img {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+} */
+
 .image:before {
   content: "";
   position: absolute;
@@ -158,11 +165,11 @@ span {
   padding: 10px;
   text-align: center;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  top: 20px;
+  right: 605px;
   border-radius: 5px;
   z-index: 999;
-  animation: fade-out 7s ease;
+  animation: fade-out 4s ease;
 }
 
 @keyframes fade-out {

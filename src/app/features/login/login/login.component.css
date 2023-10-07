@@ -113,3 +113,14 @@ a {
 .login {
   cursor: pointer;
 }
+
+#password {
+  position: relative !important;
+}
+
+.labelPassword {
+  position: absolute;
+  right: 550px;
+  bottom: 248px;
+  z-index: 10;
+}
