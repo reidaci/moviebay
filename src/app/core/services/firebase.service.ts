@@ -77,7 +77,13 @@ export class FirebaseService {
         }
       })
       .catch((err) => {
-        console.log(err);
+        this.errorMsg = err.message;
+        if (
+          this.errorMsg ===
+          'Firebase: Password should be at least 6 characters (auth/weak-password).'
+        ) {
+          this.errorMsg = 'Password should be at least 6 characters';
+        }
       });
   }
 

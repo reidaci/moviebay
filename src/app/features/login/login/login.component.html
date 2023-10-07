@@ -192,6 +192,11 @@
         </g>
       </g>
     </svg>
+    <p class="validationMsg" *ngIf="email.invalid && email.value">
+      Email is incorret format
+    </p>
+
+    <p class="validationMsg"></p>
     <div class="form-group1">
       <label for="email"></label>
       <input
@@ -202,7 +207,18 @@
         placeholder="Enter your email"
         pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
         required
+        #email="ngModel"
       />
+      <p
+        class="validationMsg"
+        *ngIf="
+          loginForm.submitted &&
+          loginForm.controls['email']['errors'] &&
+          !email.value
+        "
+      >
+        Email is required
+      </p>
     </div>
     <div class="form-group2">
       <label for="password" class="labelPassword"
@@ -216,7 +232,18 @@
         name="password"
         [(ngModel)]="formData.password"
         required
+        #password="ngModel"
       />
+      <p
+        class="validationMsg"
+        *ngIf="
+          loginForm.submitted &&
+          loginForm.controls['password']['errors'] &&
+          !password.value
+        "
+      >
+        Password is required!
+      </p>
     </div>
     <button
       class="login"

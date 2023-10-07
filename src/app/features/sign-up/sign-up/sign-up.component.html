@@ -196,7 +196,9 @@
         </g>
       </g>
     </svg>
-
+    <p class="validationMsg" *ngIf="email.invalid && email.value">
+      Email is incorret format
+    </p>
     <div class="form-group2">
       <label for="username"></label>
       <input
@@ -209,9 +211,7 @@
         required
         #email="ngModel"
       />
-      <p class="validationMsg" *ngIf="email.invalid && email.value">
-        Email is incorret format
-      </p>
+
       <p
         class="validationMsg"
         *ngIf="
