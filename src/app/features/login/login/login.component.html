@@ -232,7 +232,10 @@
         #password="ngModel"
       />
       <span class="labelPassword" (click)="viewpass()"
-        ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i
+        ><i
+          [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"
+          style="cursor: pointer"
+        ></i
       ></span>
       <p
         class="validationMsg"
