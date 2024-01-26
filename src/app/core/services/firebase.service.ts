@@ -66,7 +66,7 @@ export class FirebaseService {
       .then((res: any) => {
         this.user = res.user.uid;
 
-        if (this.user === 'lPphCLTxhWNsNEfSc4wNm6Ui0f33') {
+        if (this.user === 'DGruN0bvmkX31FSXhBEs5ckv1lN2') {
           localStorage.setItem('userId', this.user);
           this.router.navigate(['/adminpage']);
           // localStorage.removeItem('userId');
