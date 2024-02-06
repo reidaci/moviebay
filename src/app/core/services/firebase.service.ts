@@ -36,7 +36,7 @@ export class FirebaseService {
 
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((response: any) => {
-        console.log(response);
+
 
         let user = {
           id: response.user.uid,
@@ -45,8 +45,7 @@ export class FirebaseService {
         };
 
         addDoc(collectionInstance, user).then((res) => {
-          console.log(user);
-          console.log(res);
+
         });
         this.successMsg = 'Welcome to MovieBay!';
       })
@@ -72,7 +71,7 @@ export class FirebaseService {
           // localStorage.removeItem('userId');
         } else {
           localStorage.setItem('userId', this.user);
-          console.log(this.user);
+
           this.router.navigate(['/movies']);
         }
       })
@@ -89,7 +88,7 @@ export class FirebaseService {
 
   getUsers() {
     const collectionInstance = collection(this.firebase, '/users');
-    console.log(typeof this.user);
+
 
     getDocs(collectionInstance).then((response) => {
       console.log(
@@ -103,8 +102,7 @@ export class FirebaseService {
   addToFavorite(movies: object) {
     const collectionInstance = collection(this.firebase, this.userUid);
     addDoc(collectionInstance, movies).then((res) => {
-      console.log(this.user);
-      console.log(res);
+
     });
   }
 

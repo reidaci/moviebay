@@ -56,7 +56,7 @@ export class MovieListComponent {
   ngOnInit() {
     this.movieservice.getMovies().subscribe(
       (res: object) => {
-        console.log(res);
+
         // this.allMovies = res;
         this.filterMovies = Object.entries(res).map(([key, value]) => ({
           key,
@@ -66,7 +66,7 @@ export class MovieListComponent {
 
         // this.filterMovies = res;
 
-        console.log('tipi array me objects', this.filterMovies);
+
       },
       (err: any) => console.log(err)
     );

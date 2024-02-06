@@ -83,7 +83,7 @@ export class AdminPageComponent {
         movieData
       )
       .subscribe((res) => {
-        console.log(res);
+
       });
     // set(ref(db, '/movies/' + this.id), movieData).then(() => {
     this.rank = '';
