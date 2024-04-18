@@ -72,7 +72,7 @@ export class FirebaseService {
       .then((res: any) => {
         this.user = res.user.uid;
 
-        if (this.user === 'DGruN0bvmkX31FSXhBEs5ckv1lN2') {
+        if (this.user === 'FFygvmPOumTl4sViUqzZqMffKih2') {
           localStorage.setItem('userId', this.user);
           this.router.navigate(['/adminpage']);
           // localStorage.removeItem('userId');
@@ -119,6 +119,7 @@ export class FirebaseService {
     addDoc(collectionInstance, movies).then((res) => {
 
     });
+
   }
 
   getFavorites() {
