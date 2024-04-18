@@ -64,6 +64,7 @@ span {
 }
 
 .watch {
+  cursor: pointer;
   display: inline-block;
   text-decoration: none;
   background-color: #ffbb2f;
