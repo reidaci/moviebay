@@ -20,7 +20,7 @@ export class SignUpComponent {
     email: '',
     password: '',
   };
-  constructor(public firebase: FirebaseService) {}
+  constructor(public firebase: FirebaseService) { }
   ngOnInit(): any {
     setTimeout(() => {
       this.isLoading = false;

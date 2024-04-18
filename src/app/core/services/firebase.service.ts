@@ -50,6 +50,7 @@ export class FirebaseService {
         this.successMsg = 'Welcome to MovieBay!';
       })
       .catch((err) => {
+        console.log(err, err.message)
         this.errorMsg = err.message;
         if (
           this.errorMsg ===
@@ -57,7 +58,13 @@ export class FirebaseService {
         ) {
           this.errorMsg = 'Password should be at least 6 characters';
         }
-      });
+        if (this.errorMsg === 'Firebase: Error (auth/email-already-in-use).') {
+          this.errorMsg = 'E-mail already exists'
+        }
+      }
+
+      );
+
   }
 
   handleLogin(email: string, password: string) {
@@ -76,6 +83,7 @@ export class FirebaseService {
         }
       })
       .catch((err) => {
+
         this.errorMsg = err.message;
         if (
           this.errorMsg ===
@@ -83,6 +91,13 @@ export class FirebaseService {
         ) {
           this.errorMsg = 'Password should be at least 6 characters';
         }
+        if (this.errorMsg === 'Firebase: Error (auth/user-not-found).') {
+          this.errorMsg = 'User not found'
+        }
+        if (this.errorMsg = 'Firebase: Error (auth/wrong-password).') {
+          this.errorMsg = 'Wrong password'
+        }
+
       });
   }
 

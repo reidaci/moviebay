@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/core/services/firebase.service';
 import { MoviesService } from 'src/app/core/services/movies.service';
@@ -15,9 +16,9 @@ export class LoginComponent {
   isLoading: boolean = true;
   visible: boolean = true;
   changetype: boolean = true;
-
+  @ViewChild('loginForm') logInForm!: NgForm;
   constructor(
-    private firebase: FirebaseService,
+    public firebase: FirebaseService,
     private getMovies: MoviesService,
     private router: Router
   ) {
@@ -34,6 +35,14 @@ export class LoginComponent {
   }
 
   logIn(email: string, pass: string) {
+
     this.firebase.handleLogin(email, pass);
+    setTimeout(() => {
+      this.logInForm.resetForm();
+      this.firebase.errorMsg = '';
+      this.firebase.successMsg = '';
+    }, 3000);
   }
 }
+
+
