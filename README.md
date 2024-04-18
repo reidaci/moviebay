@@ -14,14 +14,16 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Project Setup
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+After cloning the project repository, run npm install to install project dependencies.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Admin Page
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To access the Admin Page, please use the following login credentials:
+
+Email: moviebay.admin@outlook.com
+Password: reizdaci
+From the Admin Page, you can manage users and movies by adding or removing them.
