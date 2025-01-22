@@ -22,8 +22,5 @@ After cloning the project repository, run npm install to install project depende
 
 ## Admin Page
 
-To access the Admin Page, please use the following login credentials:
+To access the Admin Page, please contact me: reiz.daci@outlook.com
 
-Email: moviebay.admin@outlook.com
-Password: reizdaci
-From the Admin Page, you can manage users and movies by adding or removing them.
