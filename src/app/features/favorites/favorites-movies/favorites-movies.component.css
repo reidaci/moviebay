@@ -78,50 +78,94 @@ section {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 .card:hover {
   transform: scale(1.05);
 }
 
 img {
   max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .details {
   padding: 10px;
 }
+
 h4,
 p,
 span {
   color: #eeeeee;
+  margin: 0;
 }
 
 .removeButton {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 5px;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
   border-bottom-left-radius: 10px;
   border-top-right-radius: 10px;
   border: none;
   background: #ffbb2f;
+  cursor: pointer;
 }
 
 .removeButton i {
   color: #053b50 !important;
 }
+
 @media only screen and (max-width: 991px) {
   section {
     grid-template-columns: repeat(3, 28%);
   }
+
+  .container nav {
+    padding: 0 20px;
+  }
+
+  .card {
+    flex-direction: column;
+  }
 }
+
 @media only screen and (max-width: 767px) {
   section {
     grid-template-columns: repeat(2, 40%);
   }
+
+  .card {
+    flex-direction: column;
+  }
+
+  .removeButton {
+    top: 5px;
+    right: 5px;
+  }
 }
+
 @media only screen and (max-width: 575px) {
   section {
     grid-template-columns: repeat(1, 80%);
+  }
+
+  .card {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .details {
+    padding: 10px;
+  }
+
+  .removeButton {
+    top: 5px;
+    right: 5px;
+    padding: 5px 8px;
   }
 }
