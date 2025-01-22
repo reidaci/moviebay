@@ -1,99 +1,108 @@
+/* Base container styles */
 .container {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
+  overflow-x: hidden;
+  background-color: #176b87;
+  display: flex;
+  flex-direction: column;
 }
+
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
+  padding: 10px 20px;
   width: 100%;
+  background-color: #053b50;
 }
+
 
 svg {
-  height: 70px;
-  width: 120px;
+  height: 50px;
+  width: auto;
 }
 
-a {
-  font-size: 20px;
+
+.searchLogout {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 input {
   border: none;
   background-color: white;
-  padding: 10px 0 10px 10px;
+  padding: 10px 15px;
   border-radius: 20px;
+  width: 200px;
 }
 
 input:focus {
-  outline: 0;
+  outline: none;
 }
 
-.searchLogout {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-i {
-  color: #ffbb2f;
-  cursor: pointer;
-  transition: ease 0.3s;
-  font-size: 25px;
-}
-
-i:hover {
-  transform: scale(1.2);
-}
-
-a {
-  color: #ffbb2f;
-  cursor: pointer;
-}
 
 .content {
   display: grid;
   width: 100%;
-  grid-template-columns: 15% 70% 15%;
+  grid-template-columns: 200px 1fr;
+  flex: 1;
 }
 
+
 aside {
-  background-color: #eeeeee;
+  background-color: #176b87;
+  padding: 20px;
 }
+
+aside:last-child {
+  display: none; 
+}
+
 
 section {
   display: grid;
-  grid-template-columns: repeat(4, 20%);
-  justify-content: space-evenly;
-  padding: 50px 0;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
   background-color: #176b87;
 }
 
+
 .card {
-  margin-bottom: 30px;
   background-color: #053b50;
-  transition: ease 0.3s;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  transition: transform 0.3s ease;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 250px;
 }
+
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
+
 
 .image {
   position: relative;
+  width: 100%;
+  padding-top: 150%; 
+  overflow: hidden;
   cursor: pointer;
-  max-width: 100%;
 }
 
-/* .image img {
-  height: 100%;
+.image img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-position: center;
-} */
+  height: 100%;
+  object-fit: cover;
+}
 
 .image:before {
   content: "";
@@ -103,16 +112,27 @@ section {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  background-image: url(../../../../assets/images/play-button.svg);
   background-position: center center;
   background-size: initial;
   background-repeat: no-repeat;
   transition: opacity 0.5s;
   opacity: 0;
 }
+
 .image:hover:before {
   opacity: 1;
 }
+
+
+.details {
+  padding: 10px;
+}
+
+.details h4, .details p, .details span {
+  color: #eeeeee;
+  margin: 5px 0;
+}
+
 
 .rating {
   position: absolute;
@@ -127,6 +147,7 @@ section {
   z-index: 1;
 }
 
+
 .addToFav {
   position: absolute;
   top: 0;
@@ -136,63 +157,96 @@ section {
   border-top-right-radius: 10px;
   border: none;
   background: #ffbb2f;
+  cursor: pointer;
 }
 
-.addToFav i {
-  color: #053b50 !important;
-  font-size: 20px;
+
+pagination-controls {
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #176b87;
 }
 
-img {
-  max-width: 100%;
-}
 
-.details {
-  padding: 10px;
-}
-h4,
-p,
-span {
+.favBtnsWrapper button {
+  width: 100%;
+  text-align: left;
+  padding: 8px 15px;
+  border: none;
+  background: transparent;
   color: #eeeeee;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-.favBtnsWrapper:not(:first-child) {
-  padding-top: 20px;
+.favBtnsWrapper button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
+
 
 .success-message {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  text-align: center;
   position: fixed;
   top: 20px;
-  right: 605px;
-  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 999;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
   animation: fade-out 4s ease;
 }
 
 @keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 180px 1fr;
   }
 }
-@media only screen and (max-width: 991px) {
+
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .searchLogout {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .content {
+    grid-template-columns: 1fr;
+  }
+  
+  aside:first-child {
+    display: none;
+  }
+  
   section {
-    grid-template-columns: repeat(3, 28%);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
-@media only screen and (max-width: 767px) {
-  section {
-    grid-template-columns: repeat(2, 40%);
+
+@media (max-width: 480px) {
+  svg {
+    height: 40px;
   }
-}
-@media only screen and (max-width: 575px) {
-  section {
-    grid-template-columns: repeat(1, 80%);
+  
+  input {
+    width: 150px;
+  }
+  
+  .card {
+    max-width: 200px;
   }
 }
