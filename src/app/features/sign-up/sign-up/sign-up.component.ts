@@ -3,6 +3,7 @@ import { User } from './../../../core/models/user';
 import { Component, ViewChild } from '@angular/core';
 import { timeout } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,7 +21,7 @@ export class SignUpComponent {
     email: '',
     password: '',
   };
-  constructor(public firebase: FirebaseService) { }
+  constructor(public firebase: FirebaseService,private router: Router) { }
   ngOnInit(): any {
     setTimeout(() => {
       this.isLoading = false;
@@ -34,9 +35,11 @@ export class SignUpComponent {
   signUp(email: string, pass: string) {
     if (this.signUpForm.invalid) return;
     this.firebase.handleRegister(email, pass);
+    
 
     console.log(this.signUpForm.controls);
     setTimeout(() => {
+      this.router.navigate(['/login']);
       this.signUpForm.resetForm();
       this.firebase.errorMsg = '';
       this.firebase.successMsg = '';

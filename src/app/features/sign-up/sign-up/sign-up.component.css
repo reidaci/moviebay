@@ -1,5 +1,5 @@
 .signup-container {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -13,11 +13,17 @@
     #135f79,
     #176b87
   );
+  padding: 1rem;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #eeeeee;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
+
 form {
   background-image: linear-gradient(
     to bottom,
@@ -27,33 +33,34 @@ form {
     #135f79,
     #176b87
   );
-  width: 30%;
-  height: 50%;
+  width: min(90%, 400px);
+  min-height: 450px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border-radius: 10px;
   box-shadow: 18px 17px 77px -10px rgba(0, 0, 0, 0.75);
+  padding: 2rem 1rem;
+  margin: 1rem;
 }
 
-.form-group1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  gap: 5px;
-}
-
+.form-group1,
 .form-group2 {
+  width: 100%;
+  max-width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   gap: 5px;
+  margin-bottom: 1rem;
 }
 
 .form-group3 {
+  width: 100%;
+  max-width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,13 +71,15 @@ form {
 }
 
 input {
-  height: 30px;
-  width: 280px;
+  width: 100%;
+  max-width: 280px;
+  height: 40px;
   border: none;
   border-radius: 10px;
   margin-bottom: 10px;
-  padding-left: 10px;
+  padding: 0 2.5rem 0 1rem;
   caret-color: #ffbb2f;
+  font-size: clamp(14px, 2vw, 16px);
 }
 
 input:focus {
@@ -78,32 +87,44 @@ input:focus {
 }
 
 label {
-  font-size: 20px;
+  font-size: clamp(16px, 2vw, 20px);
   color: #ffbb2f;
 }
 
-button {
+.signup {
   border: none;
-  padding: 10px 20px;
+  padding: 0.8rem 1.5rem;
   background-color: #176b87;
   border-radius: 10px;
   color: #eeeeee;
-  font-size: 18px;
+  font-size: clamp(14px, 2vw, 18px);
   transition: ease 0.3s;
-  margin-bottom: 20px;
+  margin: 1rem 0;
+  width: min(200px, 80%);
+  cursor: pointer;
 }
 
-button:hover {
-  transform: scale(1.1);
+.signup:hover {
+  transform: scale(1.05);
+}
+
+.signup:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
 svg {
-  height: 100px;
-  width: 200px;
+  height: auto;
+  width: min(200px, 80%);
+  margin-bottom: 1.5rem;
 }
 
 p {
   color: #eeeeee;
+  font-size: clamp(14px, 2vw, 16px);
+  text-align: center;
+  margin: 0.5rem 0;
 }
 
 a {
@@ -111,25 +132,63 @@ a {
   font-weight: 800;
 }
 
-/* .eyeicon {
-  cursor: pointer;
-} */
-
-.signup {
-  cursor: pointer;
-}
-
-/* .password {
-  position: relative !important;
-} */
-
 .labelPassword {
   position: absolute;
   right: 10px;
-  top: 5px;
+  top: 50%;
+  transform: translateY(-100%);
   z-index: 10;
+  cursor: pointer;
 }
 
 .validationMsg {
   color: #c70039;
+  font-size: clamp(12px, 1.5vw, 14px);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 95%;
+    padding: 1.5rem 1rem;
+  }
+
+  input {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    width: 100%;
+    padding: 1rem 0.5rem;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .form-group1,
+  .form-group2,
+  .form-group3 {
+    width: 90%;
+  }
+
+  .signup {
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  form {
+    padding: 1rem 0.25rem;
+  }
+
+  input {
+    width: 85%;
+  }
+
+  svg {
+    width: 90%;
+  }
 }
