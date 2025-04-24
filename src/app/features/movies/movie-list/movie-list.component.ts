@@ -31,6 +31,7 @@ export class MovieListComponent {
   searchedMovies: any;
   page: any = 1;
   addToFavoritesMessageVisible = false;
+  selectedCategory: string = '';
   categories: any = [
     'All movies',
     'Top Rated',
@@ -90,6 +91,7 @@ export class MovieListComponent {
 
   filterCategory(category: string) {
     this.allMovies = this.filterMovies;
+    this.selectedCategory = category;
     const filteredResult: any[] = [];
     if (category === 'Top Rated') {
       this.allMovies.forEach((element: any) => {

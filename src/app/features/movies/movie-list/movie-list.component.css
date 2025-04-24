@@ -1,4 +1,3 @@
-/* Base container styles */
 .container {
   min-height: 100vh;
   width: 100%;
@@ -31,6 +30,7 @@ svg {
   gap: 15px;
 }
 
+
 input {
   border: none;
   background-color: white;
@@ -41,6 +41,13 @@ input {
 
 input:focus {
   outline: none;
+}
+
+
+#logOut {
+  color: #ffbb2f;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 
@@ -58,7 +65,7 @@ aside {
 }
 
 aside:last-child {
-  display: none; 
+  display: none;
 }
 
 
@@ -90,7 +97,7 @@ section {
 .image {
   position: relative;
   width: 100%;
-  padding-top: 150%; 
+  padding-top: 150%;
   overflow: hidden;
   cursor: pointer;
 }
@@ -206,6 +213,30 @@ pagination-controls {
 }
 
 
+.mobile-category-filter {
+  display: none;  
+  overflow-x: auto;
+  padding: 10px;
+  background-color: #053b50;
+  width: 100%;
+}
+
+.mobile-category-filter button {
+  margin-right: 10px;
+  padding: 5px 15px;
+  background-color: transparent;
+  border: 1px solid #ffbb2f;
+  border-radius: 15px;
+  color: #ffbb2f;
+  white-space: nowrap;
+}
+
+.mobile-category-filter button.active {
+  background-color: #ffbb2f;
+  color: #053b50;
+}
+
+
 @media (max-width: 1024px) {
   .content {
     grid-template-columns: 180px 1fr;
@@ -232,12 +263,31 @@ pagination-controls {
     display: none;
   }
   
+  /* Show mobile category filter on mobile */
+  .mobile-category-filter {
+    display: flex;
+  }
+  
   section {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
 
 @media (max-width: 480px) {
+  form {
+    width: 100%;
+    padding: 1rem 0.5rem;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .form-group1,
+  .form-group3 {
+    width: 90%;
+  }
+
   svg {
     height: 40px;
   }
@@ -245,8 +295,43 @@ pagination-controls {
   input {
     width: 150px;
   }
-  
-  .card {
-    max-width: 200px;
+}
+
+@media (max-width: 320px) {
+  form {
+    padding: 1rem 0.25rem;
   }
+
+  input {
+    width: 85%;
+  }
+
+  svg {
+    width: 90%;
+  }
+}
+
+/* Fix for the eye icon from previous pages */
+.form-group3 {
+  position: relative;
+}
+
+.labelPassword {
+  position: absolute;
+  right: 15px;
+  top: 20px;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: #053b50;
+}
+
+.fa-eye, .fa-eye-slash {
+  font-size: 18px;
+  color: #053b50;
+}
+
+input[type="password"], 
+input.password,
+input[id="password"] {
+  padding-right: 40px;
 }

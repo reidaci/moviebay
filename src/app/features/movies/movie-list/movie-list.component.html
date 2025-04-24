@@ -148,7 +148,14 @@
         </button>
       </div>
     </aside>
-
+    <div class="mobile-category-filter" *ngIf="!isLoading">
+      <button 
+        *ngFor="let x of categories" 
+        (click)="filterCategory(x)" 
+        [class.active]="selectedCategory === x">
+        {{ x }}
+      </button>
+    </div>
     <section>
       <div class="card" *ngFor="
           let movie of allMovies

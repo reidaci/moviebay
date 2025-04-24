@@ -133,13 +133,22 @@ a {
 
 .labelPassword {
   position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-100%);
+  right: 15px;
+  top: 20px; 
+  transform: translateY(-50%); 
   z-index: 10;
   cursor: pointer;
+  color: #053b50;
 }
-
+.fa-eye, .fa-eye-slash {
+  font-size: 18px;
+  color: #053b50;
+}
+input[type="password"], 
+input.password,
+input[id="password"] {
+  padding-right: 40px;
+}
 .validationMsg {
   color: #c70039;
   font-size: clamp(12px, 1.5vw, 14px);
