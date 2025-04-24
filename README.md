@@ -22,5 +22,5 @@ After cloning the project repository, run npm install to install project depende
 
 ## Admin Page
 
-To access the Admin Page, please contact me: reiz.daci@outlook.com
+To access the Admin Page: (localhost:4200/adminpage)
 
